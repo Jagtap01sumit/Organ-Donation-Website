@@ -25,6 +25,9 @@ app.get("/Hospital_req.html", function (req, res) {
 app.get("/Organ_Form.html", function (req, res) {
   res.sendFile(__dirname + "/views/Organ_Form.html");
 });
+app.get("/organ_donation.html", function (req, res) {
+  res.sendFile(__dirname + "/views/organ_donation.html");
+});
 
 // define schema
 const OrganSchema = new mongoose.Schema({
@@ -48,19 +51,8 @@ const Hos_reqSchema = new mongoose.Schema({
   adhar: String,
   organ: String
 },{timestamps:true});
-// const Organ_Table_Data = new mongoose.Schema({
-//   id: String,
-//   fullname: String,
 
-//   age: String,
-
-//   adhar: String,
-//   organ: String,
-  // timestamp: timestamp
-// },     { timestamps: true }
-// );
-
-const Hospital_req_organ = mongoose.model("Hospital", Hos_reqSchema);
+const Hospital_req_organ = mongoose.model("Hospitals_request", Hos_reqSchema);
 app.post("/Hospital_request", (req, res) => {
   console.log(req.body)
   var Hospital_req_Data = new Hospital_req_organ(req.body);
@@ -92,24 +84,10 @@ app.get("/Organ_Table.html",(req,res)=>{
   res.sendFile(__dirname+"/views/Organ_Table.html")
 
 })
-// app.post("/organ_table", (req, res) => {
-
-//   var myorganTable= new Organ_Table_Data(req.body);
-//   console.log(myorganTable);
-//   myorganTable
-//     .save()
-//     .then(() => {
-//       // res.send("This item has been saved to the database");
-//     })
-//     .catch(() => {
-//       res.status(400).send("Itme not saved");
-//     });
-// });
 
 
 
-
-const Organ= mongoose.model("organ_donation",OrganSchema  );
+const Organ= mongoose.model("organ_donation_Form",OrganSchema  );
 app.post("/Organ", (req, res) => {
   var myorganData = new Organ(req.body);
   console.log(myorganData);

@@ -11,7 +11,8 @@
     <title>Orders table</title>
     <!-- local links -->
     <link href="/static/style/styles.css" rel="stylesheet" media="all">
-    <link rel="icon" href="/static/assets/images/blood-drop.svg">
+    
+    <link rel="icon" href="/static/assets/images/icon_logo.png">
     <link rel="stylesheet" href="/static/style/tables.css">
 
     <!-- local scripts -->
@@ -36,8 +37,8 @@
 <body>
     <!-- ---------------------------------------------------------------------------------------------- -->
     <nav class="navbar navbar-expand-xl navbar-light " style="background-color: #ffb5fd;">
-        <a class="navbar-brand" href="/views/bb.html">
-            <img src="/static/assets/images/navbar-blood-drop.svg" width="30" height="30"
+        <a class="navbar-brand" href="Organ_Form.html">
+            <img src="/static/assets/images/organ_logo2.png" width="30" height="30"
                 class="d-inline-block align-top" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -45,12 +46,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" style="font-weight: bold;" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
+                <li class="nav-item ">
                     <a class="nav-link" href="Organ_Form.html">Donate</a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item " style="font-weight: bold;">
                     <a class="nav-link" href="Hospital_req.html">request</a>
                 </li>
 
@@ -59,24 +60,24 @@
                 <button class="btn btn-primary dropdown-toggle " type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" style="border:1px; background-color: #ff82fc;margin-right:50px;"
                     aria-haspopup="true" aria-expanded="false">
-                    View tables
-                </button>
+                   View tables
+                </button>  
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <!-- <a class="dropdown-item" href="viewDonors.html">Donors</a> -->
-                    <a class="dropdown-item" href="Organ_Table.html" style="font-weight: bold" ;>Hospital Orders</a>
-
+                   <!-- <a class="dropdown-item" href="viewDonors.html">Donors</a>  -->
+                    <a class="dropdown-item" href="Organ_Table.html">Hospital Orders</a>
+               
                 </div>
             </div>
         </div>
     </nav>
     <!-- ---------------------------------------------------------------------------------------------- -->
     <div class="container-fluid">
-        <div class="row d-flex justify-content-center">
+        <!-- <div class="row d-flex justify-content-center">
             <div class="d-flex p-2 col-6 ">
                 <input class="form-control" id="search-input" type="search" placeholder="Search" aria-label="Search"
                     onkeyup="searchTable()">
             </div>
-        </div>
+        </div> -->
         <div class="row d-flex justify-content-center">
             <table id="data-table" class="table table-hover table-striped table-bordered col-6">
                 <thead>
