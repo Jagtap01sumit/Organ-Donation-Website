@@ -44,8 +44,8 @@
     <!-- ---------------------------------------------------------------------------------------------- -->
     <nav class="navbar navbar-expand-xl navbar-light " style="background-color: #ffb5fd;">
         <!-- <a class="navbar-brand" href="/views/bb.html"> -->
-            <img src="/static/assets/images/navbar-blood-drop.svg" width="30" height="30"
-                class="d-inline-block align-top" alt="">
+        <img src="/static/assets/images/navbar-blood-drop.svg" width="30" height="30" class="d-inline-block align-top"
+            alt="">
         <!-- </a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,19 +58,24 @@
                     <a class="nav-link" href="Organ_Form.html">Donate</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="Hospital_req.html">Order blood units</a>
+                    <a class="nav-link" href="Hospital_req.html">request</a>
                 </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="MCI.html">Multiple Casualty Incident</a>
                 </li> -->
             </ul>
             <div class="dropdown">
-                <!-- <button class="btn btn-primary dropdown-toggle " type="button" id="dropdownMenuButton"
+                <button class="btn btn-primary dropdown-toggle " type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" style="border:1px; background-color: #ff82fc;margin-right:50px;"
                     aria-haspopup="true" aria-expanded="false">
-                    <!-- View tables -->
-                <!-- </button> --> 
-               
+                    View tables
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <!-- <a class="nav-link" href="Organ_Form.html">Donate</a> -->
+                    <a class="dropdown-item" href="Organ_Table.html">Hospital Orders</a>
+
+                </div>
+
             </div>
         </div>
     </nav>
@@ -80,7 +85,7 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Receiving Blood</h2>
+                    <h2 class="title">Donation Form</h2>
                     <form action="/Organ" method="post">
                         <div class="row row-space">
                             <div class="col-6">
@@ -147,10 +152,10 @@
                         <br>
 
 
-                        <button class="btn btn--pink" type="submit" >Submit</button>
-                        <button class="btn btn--pink" type="reset" >Reset</button>
+                        <button class="btn btn--pink" type="submit">Submit</button>
+                        <button class="btn btn--pink" type="reset">Reset</button>
 
-                     
+
                     </form>
                 </div>
             </div>

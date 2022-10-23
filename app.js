@@ -11,64 +11,106 @@ async function main() {
 }
 const app = express();
 const port = 80;
+app.use("/static", express.static("static")); // For serving static files
+app.use(express.urlencoded());
+app.use(express.json());
 main();
-app.get('/', function(req, res){
-    res.sendFile(__dirname + '/views/Organ_Form.html');
+app.get("/", function (req, res) {
+  res.sendFile(__dirname + "/views/Organ_Form.html");
 });
-app.get('/Hospital_req.html', function(req, res){
-    res.sendFile(__dirname + '/views/Hospital_req.html');
+app.get("/Hospital_req.html", function (req, res) {
+  res.sendFile(__dirname + "/views/Hospital_req.html");
 });
-app.get('/Organ_Form.html', function(req, res){
-    res.sendFile(__dirname + '/views/Organ_Form.html');
+
+app.get("/Organ_Form.html", function (req, res) {
+  res.sendFile(__dirname + "/views/Organ_Form.html");
 });
 
 // define schema
 const OrganSchema = new mongoose.Schema({
-    id: String,
-    fullname: String,
-    phone: String,
-    street: String,
-    city: String,
-    age: String,
-    
-    adhar: String,
-    organ: String
- 
+  id: String,
+  fullname: String,
+  phone: String,
+  street: String,
+  city: String,
+  age: String,
+
+  adhar: String,
+  organ: String,
 });
 
 const Hos_reqSchema = new mongoose.Schema({
-    id: String,
-    fullname: String,
-   
-    
-    age: String,
-    
-    adhar: String,
-    organ: String
- 
+  id: String,
+  fullname: String,
+
+  age: String,
+
+  adhar: String,
+  organ: String
+},{timestamps:true});
+// const Organ_Table_Data = new mongoose.Schema({
+//   id: String,
+//   fullname: String,
+
+//   age: String,
+
+//   adhar: String,
+//   organ: String,
+  // timestamp: timestamp
+// },     { timestamps: true }
+// );
+
+const Hospital_req_organ = mongoose.model("Hospital", Hos_reqSchema);
+app.post("/Hospital_request", (req, res) => {
+  console.log(req.body)
+  var Hospital_req_Data = new Hospital_req_organ(req.body);
+  console.log(Hospital_req_Data);
+  Hospital_req_Data.save()
+    .then(() => {
+      // res.send("This item has been saved to the database");
+    })
+    .catch(() => {
+      res.status(400).send("Itme not saved");
+    });
 });
 
 
-const Hospital_req_organ = mongoose.model("Hospital", Hos_reqSchema);
-
-app.use("/static", express.static("static")); // For serving static files
-app.use(express.urlencoded());
-app.use(express.json());
 app.get("/views/Organ_Form.html", (req, res) => {
-    res.sendFile(__dirname + "/views/Organ_Form.html");
-  });
+  res.sendFile(__dirname + "/views/Organ_Form.html");
+});
 
-app.get('/Organ',(req,res)=>{
-      const params = {};    res.status(200).render("Organ_Form.html", params);
- })
-// app.get("/pages/viewDonors.html",(req,res)=>{
-//   res.sendFile(__dirname + "/views/viewHospitalUse.html");
-//  })
-app.get("Organ_Form.html", (req, res) => {
-    res.sendFile(__dirname + "/views/Organ_Form.html");
-  });
+app.get("organ_req_table.html", (req, res) => {
+  res.sendFile(__dirname + "/views/organ_req_table.html");
+});
 
-app.post('/Organ', (req, res) => {
+app.get("/Organ", (req, res) => {
+  const params = {};
+  res.status(200).render("/Organ_Form.html", params);
+});
+
+app.get("/Organ_Table.html",(req,res)=>{
+  res.sendFile(__dirname+"/views/Organ_Table.html")
+
+})
+// app.post("/organ_table", (req, res) => {
+
+//   var myorganTable= new Organ_Table_Data(req.body);
+//   console.log(myorganTable);
+//   myorganTable
+//     .save()
+//     .then(() => {
+//       // res.send("This item has been saved to the database");
+//     })
+//     .catch(() => {
+//       res.status(400).send("Itme not saved");
+//     });
+// });
+
+
+
+
+const Organ= mongoose.model("organ_donation",OrganSchema  );
+app.post("/Organ", (req, res) => {
   var myorganData = new Organ(req.body);
   console.log(myorganData);
   myorganData
@@ -79,20 +121,11 @@ app.post('/Organ', (req, res) => {
     .catch(() => {
       res.status(400).send("Itme not saved");
     });
- 
 });
-app.post('/Hospital_request', (req, res) => {
-  var Hospital_req_Data = new Hospital_req_organ(req.body);
-  console.log(Hospital_req_Data );
-  Hospital_req_Data
-    .save()
-    .then(() => {
-      // res.send("This item has been saved to the database");
-    })
-    .catch(() => {
-      res.status(400).send("Itme not saved");
-    });
- 
+
+app.get("/hospital_data", async (req,res) => {
+  const data = await Hospital_req_organ.find({});
+  res.json(data)
 });
 
 // START THE SERVER

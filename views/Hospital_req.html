@@ -55,20 +55,20 @@
                     <a class="nav-link" href="Organ_Form.html">Donate</a>
                 </li>
                 <li class="nav-item " style="font-weight: bold;">
-                    <a class="nav-link" href="Hospital_req.html">Order blood units</a>
+                    <a class="nav-link" href="Hospital_req.html">request</a>
                 </li>
 
             </ul>
             <div class="dropdown">
-                <!-- <button class="btn btn-primary dropdown-toggle " type="button" id="dropdownMenuButton"
+                <button class="btn btn-primary dropdown-toggle " type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" style="border:1px; background-color: #ff82fc;margin-right:50px;"
                     aria-haspopup="true" aria-expanded="false">
-                    <!-- View tables -->
-                <!-- </button>   -->
-                <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> -->
-                    <!-- <a class="dropdown-item" href="viewDonors.html">Donors</a> -->
-                    <!-- <a class="dropdown-item" href="viewHospitalUse.html">Hospital Orders</a> -->
-                    <!-- <a class="dropdown-item" href="viewBloodBank.html">Blood bank</a> -->
+                   View tables
+                </button>  
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                   <!-- <a class="dropdown-item" href="viewDonors.html">Donors</a>  -->
+                    <a class="dropdown-item" href="Organ_Table.html">Hospital Orders</a>
+               
                 </div>
             </div>
         </div>
@@ -80,7 +80,7 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Hospitals Request needed Organs</h2>
-                    <form id="order-form" action="/Hospital_request" method="post">
+                    <form id="order-form" action="Hospital_request" method="post">
                         <div class="row row-space">
                             <div class="col-6">
                                 <div class="input-group">
@@ -133,7 +133,7 @@
                         </div>
                         <br>
 
-                        <button class="btn btn--pink"  type="submit">Submit</button>
+                        <button class="btn btn--pink" type="submit">Submit</button>
                         <button class="btn btn--pink"  type="reset">reset</button>
 
                     </form>
@@ -162,6 +162,15 @@
     </div>
 </body>
 
-
+<script>
+    const orderForm = document.querySelector("#order-form");
+    orderForm.addEventListener("submit", e => {
+        const age = parseInt(document.querySelector("#age").value);
+        if(age < 21){
+            alert("Age must be > 21");
+            e.preventDefault();
+        }
+    });
+</script>
 </html>
 <!-- end document-->
